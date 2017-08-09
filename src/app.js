@@ -1,5 +1,5 @@
-import Hello from './js/hello'
+import Game from './js/game'
 
-(new Hello({
-  target: document.getElementsByTagName('main')[0]
-})).run();
+(new Game({
+  target: document.getElementsByTagName('canvas')[0]
+}));

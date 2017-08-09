@@ -1,5 +1,4 @@
-(function(exports){
-	"use strict";
+
 	
 /**
  * GAME class.
@@ -10,16 +9,18 @@
  * @param {Object} canvas  
  */
 	
-	class Game(){
-		constructor(){
-			this.chicken = new Chicken();
-			this.lives = 3;
-			this.canvas = document.getElementsByTagName("canvas")[0];
-		}
-		start(){
-			
-		}
-	};
-	exports.Game = Game;
-	
-})(this);
+import Chicken from './chicken';
+
+export default class Game{
+	constructor(props){
+		this.chicken = new Chicken({});
+		this.lives = 3;
+		this.canvas = props.target;
+		this.start();
+	}
+	start(){
+		this.interval = setInterval(() => {
+			console.log("timer going ")
+		}, 1000)
+	}
+};

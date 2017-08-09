@@ -1,27 +1,23 @@
-(function(exports){
-	"use strict";
+export default class Chicken{
 	
-	function Chicken(name){
-		this.name = name || "Chicklet";
+	constructor(props){
+		this.name = props.name || "Chicklet";
 	}
 	
-	exports.Chicken = Chicken;
-	
-	Chicken.prototype = {
-		greets: function(target){
-			if(!target){
-				throw new Error("missing target");
-			}
-			return `${this.name} greets ${target}`;
-		},
-		lateGreets: function(target, cb){
-			setTimeout((self) => {
-				try {
-					cb(null, self.greets(target));
-				} catch (err) {
-					cb(err);
-				}
-			}, 1000, this);
+	greets(target){
+		if(!target){
+			throw new Error("missing target");
 		}
+		return `${this.name} greets ${target}`;
 	}
-})(this);
+	
+	lateGreets(target, cb){
+		setTimeout((self) => {
+			try {
+				cb(null, self.greets(target));
+			} catch (err) {
+				cb(err);
+			}
+		}, 1000, this);
+	}
+}
